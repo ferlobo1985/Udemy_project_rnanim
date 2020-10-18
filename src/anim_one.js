@@ -29,10 +29,35 @@ const AnimOne = () =>  {
             />
 
             <Animated.View style={{
-                opacity: moveElTwo
+                //opacity: moveElTwo,
+                // transform:[
+                //     {
+                //         rotateX:moveElTwo.interpolate({
+                //             inputRange:[0,0.5,1],
+                //             outputRange:['0deg','180deg','0deg']
+                //         })
+                //     }
+                // ]
+                // left: moveElTwo.interpolate({
+                //     inputRange:[0,1],
+                //     outputRange:[300,0]
+                // })
             }}>
                 <View style={styles.square}>
-                    <Text>Anim one</Text>
+                    <Animated.Text
+                        style={{
+                            fontSize: moveElTwo.interpolate({
+                                inputRange:[0,0.5,0.8,1],
+                                outputRange:[25,5,10,30]
+                            }),
+                            color:moveElTwo.interpolate({
+                                inputRange:[0,1],
+                                outputRange:['blue','green']
+                            })
+                        }}
+                    >
+                        <Text>Anim one</Text>
+                    </Animated.Text>
                 </View>
             </Animated.View>
          
