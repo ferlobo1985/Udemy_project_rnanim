@@ -1,0 +1,12 @@
+{
+  "name": "rnanim",
+  "displayName": "rnanim",
+  "expo": {
+    "name": "rnanim",
+    "slug": "rnanim",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
