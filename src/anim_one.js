@@ -1,26 +1,36 @@
 import React, { useEffect, useRef } from 'react';
-import { StyleSheet, Text, View, Animated } from 'react-native';
+import { StyleSheet, Text, View, Animated, Easing, Button } from 'react-native';
 
 const AnimOne = () =>  {
     const movEl = useRef(new Animated.ValueXY()).current;
+    const moveElTwo = useRef(new Animated.Value(1)).current;
 
-    useEffect(()=>{
-        Animated.spring(movEl,{
+    const runMyAnim = () => {
+        Animated.timing(movEl,{
             toValue:{x:100,y:300},
-            friction:1,
-            tension:100
+            duration:2000,
+            delay:1000,
+            easing:Easing.elastic(1)
         }).start();
-    },[movEl])
+    }
 
+    const runMyTimingAnim = () => {
+        Animated.timing(moveElTwo,{
+            toValue:0,
+            duration:500
+        }).start();
+    }
+    
     return (
         <View style={styles.container}>
-            <Animated.View
-                style={movEl.getLayout()}
-                // style={{
-                //     left:movEl.x,
-                //     top:movEl.y
-                // }}
-            >
+            <Button
+                title="Trigger anim"
+                onPress={runMyTimingAnim}
+            />
+
+            <Animated.View style={{
+                opacity: moveElTwo
+            }}>
                 <View style={styles.square}>
                     <Text>Anim one</Text>
                 </View>
@@ -32,7 +42,6 @@ const AnimOne = () =>  {
 
 const styles = StyleSheet.create({
     container:{
-        flex:1,
         backgroundColor:'#ffffff'
     },
     square:{
